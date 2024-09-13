@@ -3,11 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
 <body>
-  <h1>Rock-Paper-Scissors Game</h1>
-  <p style="font-size: 20px;">5局3胜制</p>
+  <div class="container">
+    <div><button class="choice" id="rock">Rock</button></div>
+    <div><button class="choice" id="paper">Paper</button></div>
+    <div><button class="choice" id="scissors">Scissors</button></div>
+    <div>
+      <p id="result"></p>
+      <p id="score">
+        <span id="humanScore">0</span> - <span id="computerScore">0</span>
+      </p>
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>

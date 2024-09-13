@@ -33,25 +33,47 @@ function playRound(humanChoice,computerChoice){
   }
 }
 
-for(let i = 0; i < 5; i++){
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
-  const result = playRound(humanSelection, computerSelection);
-  alert(result);
+const choices = document.querySelectorAll('.choice');
 
-  if(result === "你赢了！"){
-    humanScore++;
-  } else if(result === "电脑赢了！"){
-    computerScore++;
-  }
+choices.forEach(choice => {
+  choice.addEventListener("click",()=>{
+    choice.style.backgroundColor = "red";
+    setTimeout(()=>{
+      choice.style.backgroundColor = "";
+    },100);
+    const humanSelection = choice.id;
+    const computerSelection = getComputerChoice();
+    const result = playRound(humanSelection, computerSelection);
+    if(result === "你赢了！"){
+      humanScore++;
+    }
+    else if(result === "电脑赢了！"){
+      computerScore++;
+    }
+    document.getElementById("result").textContent = result;
+    document.getElementById("humanScore").textContent = humanScore;
+    document.getElementById("computerScore").textContent = computerScore;
+    if(humanScore === 5){
+      alert("You win the game!");
+      humanScore = 0;
+      computerScore = 0;
+    }
+    else if(computerScore === 5){
+      alert("Computer wins the game!");
+      humanScore = 0;
+      computerScore = 0;
+    }
+  });
+});
 
-  if(humanScore === 3){
-    alert("You win the game!");
-    break;
-  }
-  else if(computerScore === 3){
-    alert("Computer wins the game!");
-    break;
-  }
-}
+const humanScoreElement = document.getElementById("humanScore");
+const computerScoreElement = document.getElementById("computerScore");
+
+humanScoreElement.textContent = humanScore;
+computerScoreElement.textContent = computerScore;
+
+
+
+
+
 
